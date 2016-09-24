@@ -1,6 +1,9 @@
 package smile.silence.tools.framework;
 
+import com.alee.extended.panel.WebButtonGroup;
 import com.alee.laf.WebLookAndFeel;
+import com.alee.laf.button.WebToggleButton;
+import com.alee.laf.rootpane.WebFrame;
 import smile.silence.tools.iface.Transformer;
 import smile.silence.tools.transformers.TransformerContainer;
 
@@ -26,13 +29,19 @@ public class TransformTool
     basic.add(TransformContentPane.getInstance());
     
     JPanel boxPanel = new JPanel(new FlowLayout(2, 20, 0));
+    WebToggleButton encodeT = new WebToggleButton ( "Encode" );
+    WebToggleButton decodeT = new WebToggleButton ( "Decode" );
+    decodeT.setSelected(true);
+    WebButtonGroup textGroup = new WebButtonGroup ( true, encodeT, decodeT );
+    boxPanel.add(textGroup);
+
     boxPanel.add(EncodingComboBox.getInstance());
     boxPanel.add(RevertButton.getInstance());
     boxPanel.add(CopyButton.getInstance());
     boxPanel.add(ClearButton.getInstance());
-    
+
     basic.add(boxPanel);
-    
+
     JPanel bottom = new JPanel(new FlowLayout(2, 20, 10));
     
     Iterator<Transformer> transformerIterator = TransformerContainer.getIterator();
