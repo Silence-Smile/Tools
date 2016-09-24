@@ -4,6 +4,7 @@ import com.alee.extended.panel.WebButtonGroup;
 import com.alee.laf.WebLookAndFeel;
 import com.alee.laf.button.WebToggleButton;
 import com.alee.laf.rootpane.WebFrame;
+import smile.silence.tools.constant.OperationType;
 import smile.silence.tools.iface.Transformer;
 import smile.silence.tools.transformers.TransformerContainer;
 
@@ -11,6 +12,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.Iterator;
 import javax.swing.*;
+
+import static javax.swing.BoxLayout.Y_AXIS;
 
 public class TransformTool
   extends JFrame
@@ -23,24 +26,11 @@ public class TransformTool
   public final void initUI()
   {
     JPanel basic = new JPanel();
-    basic.setLayout(new BoxLayout(basic, 1));
+    basic.setLayout(new BoxLayout(basic, Y_AXIS));
     add(basic);
-    
+
     basic.add(TransformContentPane.getInstance());
-    
-    JPanel boxPanel = new JPanel(new FlowLayout(2, 20, 0));
-    WebToggleButton encodeT = new WebToggleButton ( "Encode" );
-    WebToggleButton decodeT = new WebToggleButton ( "Decode" );
-    decodeT.setSelected(true);
-    WebButtonGroup textGroup = new WebButtonGroup ( true, encodeT, decodeT );
-    boxPanel.add(textGroup);
-
-    boxPanel.add(EncodingComboBox.getInstance());
-    boxPanel.add(RevertButton.getInstance());
-    boxPanel.add(CopyButton.getInstance());
-    boxPanel.add(ClearButton.getInstance());
-
-    basic.add(boxPanel);
+    basic.add(OptionPanel.getInstance());
 
     JPanel bottom = new JPanel(new FlowLayout(2, 20, 10));
     
