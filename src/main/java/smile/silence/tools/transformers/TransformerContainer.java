@@ -11,12 +11,13 @@ public class TransformerContainer
 
 	static
 	{
-		register(new HexStrTransformer());
-		register(new UrlTransformer());
-		register(new SqlInTransformer());
+		regist(new HexStrTransformer());
+		regist(new UrlTransformer());
+		regist(new SqlInTransformer());
+		regist(new XmlFormatTransformer());
 	}
 
-	private static void register(Transformer transformer)
+	private static void regist(Transformer transformer)
 	{
 		transformers.add(transformer);
 	}
