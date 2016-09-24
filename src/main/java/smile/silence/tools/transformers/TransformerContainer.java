@@ -15,6 +15,7 @@ public class TransformerContainer
 		regist(new UrlTransformer());
 		regist(new SqlInTransformer());
 		regist(new XmlFormatTransformer());
+		regist(new JsonFormatTransformer());
 	}
 
 	private static void regist(Transformer transformer)

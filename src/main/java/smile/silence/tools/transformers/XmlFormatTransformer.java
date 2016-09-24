@@ -1,5 +1,8 @@
 package smile.silence.tools.transformers;
 
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import smile.silence.tools.framework.group.TransformContentPane;
+
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -22,6 +25,7 @@ public class XmlFormatTransformer implements smile.silence.tools.iface.Transform
 
 	public String encode(String origin, String encoding) throws Exception
 	{
+		TransformContentPane.getInstance().setSyntax(SyntaxConstants.SYNTAX_STYLE_XML);
 		BufferedReader br = new BufferedReader(new StringReader(origin));
 		StringBuilder sb = new StringBuilder();
 		String line;
@@ -34,6 +38,7 @@ public class XmlFormatTransformer implements smile.silence.tools.iface.Transform
 
 	public String decode(String origin, String encoding) throws Exception
 	{
+		TransformContentPane.getInstance().setSyntax(SyntaxConstants.SYNTAX_STYLE_XML);
 		Source xmlInput = new StreamSource(new StringReader(origin));
 		StringWriter stringWriter = new StringWriter();
 		StreamResult xmlOutput = new StreamResult(stringWriter);
