@@ -1,8 +1,12 @@
 package smile.silence.tools.iface;
 
-public abstract interface Transformer
+import java.io.UnsupportedEncodingException;
+
+public interface Transformer
 {
-  public abstract String getName();
-  
-  public abstract String transform(String paramString1, String paramString2);
+	public String getName();
+
+	public String encode(String origin, String encoding) throws Exception;
+
+	public String decode(String origin, String encoding) throws Exception;
 }

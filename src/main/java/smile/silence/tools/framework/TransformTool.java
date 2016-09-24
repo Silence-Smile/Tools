@@ -1,10 +1,9 @@
 package smile.silence.tools.framework;
 
-import com.alee.extended.panel.WebButtonGroup;
 import com.alee.laf.WebLookAndFeel;
-import com.alee.laf.button.WebToggleButton;
-import com.alee.laf.rootpane.WebFrame;
-import smile.silence.tools.constant.OperationType;
+import smile.silence.tools.framework.group.OptionPanel;
+import smile.silence.tools.framework.group.TransformContentPane;
+import smile.silence.tools.framework.unit.TransformButton;
 import smile.silence.tools.iface.Transformer;
 import smile.silence.tools.transformers.TransformerContainer;
 

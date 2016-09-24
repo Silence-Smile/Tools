@@ -1,9 +1,10 @@
-package smile.silence.tools.framework;
+package smile.silence.tools.framework.unit;
 
 import com.alee.extended.panel.WebButtonGroup;
 import com.alee.laf.button.WebToggleButton;
+import smile.silence.tools.constant.OperationType;
 
-class EncodeDecodeButtonGroup extends WebButtonGroup
+public class EncodeDecodeButtonGroup extends WebButtonGroup
 {
 	private static WebToggleButton encodeT = new WebToggleButton("Encode");
 	private static WebToggleButton decodeT = new WebToggleButton("Decode");
@@ -24,5 +25,18 @@ class EncodeDecodeButtonGroup extends WebButtonGroup
 	{
 		return instance;
 	}
+
+	public OperationType getOperationType()
+    {
+        if(encodeT.isSelected())
+        {
+            return OperationType.Encode;
+        }
+        else
+        {
+            return OperationType.Decode;
+        }
+    }
+
 
 }

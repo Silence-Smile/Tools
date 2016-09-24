@@ -1,4 +1,4 @@
-package smile.silence.tools.framework;
+package smile.silence.tools.framework.unit;
 
 import javax.swing.JComboBox;
 

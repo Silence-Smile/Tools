@@ -1,7 +1,6 @@
-package smile.silence.tools.framework;
+package smile.silence.tools.framework.group;
 
-import com.alee.extended.panel.WebButtonGroup;
-import com.alee.laf.button.WebToggleButton;
+import smile.silence.tools.framework.unit.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,13 +21,11 @@ public class OptionPanel extends JPanel
 	{
 		super(new FlowLayout(2, 20, 0));
 
-        add(EncodeDecodeButtonGroup.getInstance());
-        add(EncodingComboBox.getInstance());
-        add(RevertButton.getInstance());
+		add(EncodeDecodeButtonGroup.getInstance());
+		add(EncodingComboBox.getInstance());
+		add(RevertButton.getInstance());
 		add(CopyButton.getInstance());
 		add(ClearButton.getInstance());
 	}
-
-
 
 }

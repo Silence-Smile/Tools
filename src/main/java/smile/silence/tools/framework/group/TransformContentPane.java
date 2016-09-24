@@ -1,14 +1,12 @@
-package smile.silence.tools.framework;
+package smile.silence.tools.framework.group;
 
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rtextarea.RTextScrollPane;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
 public class TransformContentPane
   extends JPanel
@@ -28,7 +26,9 @@ public class TransformContentPane
     textArea.setLineWrap(true);
     textArea.setFont(new Font("微软雅黑", 0, 14));
     textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_XML);
-    add(new JScrollPane(this.textArea));
+    textArea.setCodeFoldingEnabled(true);
+    RTextScrollPane sp = new RTextScrollPane(textArea);
+    add(sp);
   }
   
   public String getText()
