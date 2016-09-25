@@ -2,8 +2,7 @@ package smile.silence.tools.framework.unit;
 
 import smile.silence.tools.constant.OperationType;
 import smile.silence.tools.framework.RevertStack;
-import smile.silence.tools.framework.group.TransformContentPane;
-import smile.silence.tools.framework.unit.EncodingComboBox;
+import smile.silence.tools.framework.group.TransformContentPanel;
 import smile.silence.tools.iface.Transformer;
 
 import java.awt.event.ActionEvent;
@@ -20,7 +19,7 @@ public final class TransformButton extends JButton
 		addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				String original = TransformContentPane.getInstance().getText();
+				String original = TransformContentPanel.getInstance().getText();
 				if ((original != null) && (original.length() > 0))
 				{
 					RevertStack.push(original);
@@ -36,14 +35,13 @@ public final class TransformButton extends JButton
 						else
 						{
 							afterTransform = transformer.decode(original, encoding);
-
 						}
 					}
 					catch (Exception exc)
 					{
 						afterTransform = "transform error:" + exc.getMessage();
 					}
-					TransformContentPane.getInstance().setText(afterTransform);
+					TransformContentPanel.getInstance().setText(afterTransform);
 				}
 			}
 		});

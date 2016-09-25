@@ -23,6 +23,8 @@ public class OptionPanel extends JPanel
 
 		add(EncodeDecodeButtonGroup.getInstance());
 		add(EncodingComboBox.getInstance());
+		add(SyntaxComboBox.getInstance());
+		add(LineWrapCheckBox.getInstance());
 		add(RevertButton.getInstance());
 		add(CopyButton.getInstance());
 		add(ClearButton.getInstance());

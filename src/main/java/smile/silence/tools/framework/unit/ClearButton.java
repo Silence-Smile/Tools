@@ -1,6 +1,6 @@
 package smile.silence.tools.framework.unit;
 
-import smile.silence.tools.framework.group.TransformContentPane;
+import smile.silence.tools.framework.group.TransformContentPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,10 +17,9 @@ public final class ClearButton
     {
       public void actionPerformed(ActionEvent e)
       {
-        TransformContentPane.getInstance().setText("");
+        TransformContentPanel.getInstance().setText("");
       }
     });
-    setMnemonic(90);
     setText("Clear");
   }
   

@@ -8,23 +8,23 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.*;
 
-public class TransformContentPane extends JPanel
+public class TransformContentPanel extends JPanel
 {
-	private static TransformContentPane ourInstance = new TransformContentPane();
+	private static TransformContentPanel ourInstance = new TransformContentPanel();
 	private final RSyntaxTextArea textArea = new RSyntaxTextArea();
 
-	public static TransformContentPane getInstance()
+	public static TransformContentPanel getInstance()
 	{
 		return ourInstance;
 	}
 
-	private TransformContentPane()
+	private TransformContentPanel()
 	{
 		super(new BorderLayout());
 		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		textArea.setLineWrap(true);
 		textArea.setFont(new Font("微软雅黑", 0, 14));
-		textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_XML);
+		textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NONE);
 		textArea.setCodeFoldingEnabled(true);
 		RTextScrollPane sp = new RTextScrollPane(textArea);
 		add(sp);
@@ -41,8 +41,14 @@ public class TransformContentPane extends JPanel
 	}
 
 	public void setSyntax(String syntax)
-    {
-        textArea.setSyntaxEditingStyle(syntax);
-    }
+	{
+		textArea.setSyntaxEditingStyle(syntax);
+	}
+
+	public void setLineWrap(boolean wrap)
+	{
+		textArea.setLineWrap(wrap);
+	}
+
 
 }

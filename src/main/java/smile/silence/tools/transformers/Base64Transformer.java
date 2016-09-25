@@ -1,26 +1,26 @@
 package smile.silence.tools.transformers;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
+import org.apache.commons.codec.binary.Base64;
 import smile.silence.tools.iface.Transformer;
 
-public class UrlTransformer implements Transformer
+public class Base64Transformer implements Transformer
 {
 	public String getName()
 	{
-		return "Url";
+		return "Base64";
 	}
 
 	public String encode(String origin, String encoding) throws Exception
 	{
-		return URLEncoder.encode(origin, encoding);
+		return Base64.encodeBase64String(origin.getBytes(encoding));
 	}
 
 	public String decode(String originalStr, String encoding) throws Exception
 	{
-		return URLDecoder.decode(originalStr, encoding);
+		return new String(Base64.decodeBase64(originalStr),encoding);
 	}
 
 }
