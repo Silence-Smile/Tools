@@ -35,6 +35,11 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <formats>
+                        <format>xml</format>
+                    </formats>
+                </configuration>
             </plugin>
         </plugins>
     </build>
