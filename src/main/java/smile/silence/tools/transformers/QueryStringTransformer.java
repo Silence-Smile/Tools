@@ -21,6 +21,10 @@ public class QueryStringTransformer extends AbstractOneOperationTransformer
 
 	public String transform(String origin, String encoding) throws Exception
 	{
+		if (origin.indexOf("?") != -1)
+		{
+			origin = origin.substring(origin.indexOf("?") + 1);
+		}
 		String[] kvs = origin.split("&");
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < kvs.length; i++)
