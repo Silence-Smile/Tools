@@ -1,5 +1,6 @@
 package smile.silence.tools.transformers;
 
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import smile.silence.tools.iface.Transformer;
 
 import java.io.UnsupportedEncodingException;
@@ -9,6 +10,11 @@ public class HexStrTransformer implements Transformer
 	public String getName()
 	{
 		return "HexStr";
+	}
+
+	public String getSyntax()
+	{
+		return SyntaxConstants.SYNTAX_STYLE_NONE;
 	}
 
 	public String encode(String originalStr, String encoding) throws UnsupportedEncodingException

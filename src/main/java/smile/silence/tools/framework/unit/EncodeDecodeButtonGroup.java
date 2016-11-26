@@ -8,7 +8,7 @@ public class EncodeDecodeButtonGroup extends WebButtonGroup
 {
 	private static WebToggleButton encodeT = new WebToggleButton("Encode");
 	private static WebToggleButton decodeT = new WebToggleButton("Decode");
-	public static final EncodeDecodeButtonGroup instance = new EncodeDecodeButtonGroup();
+	private static final EncodeDecodeButtonGroup instance = new EncodeDecodeButtonGroup();
 
     static
     {

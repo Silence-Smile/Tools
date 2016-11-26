@@ -1,5 +1,6 @@
 package smile.silence.tools.framework.unit;
 
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import smile.silence.tools.constant.OperationType;
 import smile.silence.tools.framework.RevertStack;
 import smile.silence.tools.framework.group.TransformContentPanel;
@@ -22,7 +23,7 @@ public final class TransformButton extends JButton
 				String original = TransformContentPanel.getInstance().getText();
 				if ((original != null) && (original.length() > 0))
 				{
-					RevertStack.push(original);
+					RevertStack.push(new RevertStack.TransformContent(original,SyntaxComboBox.getInstance().getSelectedSyntax()));
 					String encoding = (String) EncodingComboBox.getInstance().getSelectedItem();
 
 					String afterTransform;
@@ -36,10 +37,13 @@ public final class TransformButton extends JButton
 						{
 							afterTransform = transformer.decode(original, encoding);
 						}
+						SyntaxComboBox.getInstance().setSelectedSyntax(transformer.getSyntax());
+
 					}
 					catch (Exception exc)
 					{
 						afterTransform = "transform error:" + exc.getMessage();
+						SyntaxComboBox.getInstance().setSelectedSyntax(SyntaxConstants.SYNTAX_STYLE_NONE);
 					}
 					TransformContentPanel.getInstance().setText(afterTransform);
 				}

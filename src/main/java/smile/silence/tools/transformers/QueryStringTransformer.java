@@ -1,13 +1,8 @@
 package smile.silence.tools.transformers;
 
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
-import smile.silence.tools.framework.unit.SyntaxComboBox;
 import smile.silence.tools.iface.AbstractOneOperationTransformer;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.StringReader;
-import java.io.StringWriter;
 
 /**
  * Created by hzxie on 2016/9/25.
@@ -17,6 +12,11 @@ public class QueryStringTransformer extends AbstractOneOperationTransformer
 	public String getName()
 	{
 		return "QueryStr";
+	}
+
+	public String getSyntax()
+	{
+		return SyntaxConstants.SYNTAX_STYLE_PROPERTIES_FILE;
 	}
 
 	public String transform(String origin, String encoding) throws Exception
@@ -35,7 +35,6 @@ public class QueryStringTransformer extends AbstractOneOperationTransformer
 				sb.append("\r\n");
 			}
 		}
-		SyntaxComboBox.getInstance().setSelectedSyntax(SyntaxConstants.SYNTAX_STYLE_PROPERTIES_FILE);
 		return sb.toString();
 	}
 }

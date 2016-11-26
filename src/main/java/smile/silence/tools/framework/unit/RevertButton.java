@@ -18,7 +18,9 @@ public final class RevertButton extends JButton
 			{
 				if (!RevertStack.isEmpty())
 				{
-					TransformContentPanel.getInstance().setText(RevertStack.pop());
+					RevertStack.TransformContent content = RevertStack.pop();
+					TransformContentPanel.getInstance().setText(content.getContent());
+					SyntaxComboBox.getInstance().setSelectedSyntax(content.getSyntax());
 				}
 			}
 		});

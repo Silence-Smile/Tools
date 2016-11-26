@@ -20,7 +20,8 @@ public class OptionPanel extends JPanel
 	private OptionPanel()
 	{
 		super(new FlowLayout(2, 20, 0));
-
+		add(new JLabel("Find:"));
+		add(FindTextFiled.getInstance());
 		add(EncodeDecodeButtonGroup.getInstance());
 		add(EncodingComboBox.getInstance());
 		add(SyntaxComboBox.getInstance());

@@ -50,5 +50,23 @@ public class TransformContentPanel extends JPanel
 		textArea.setLineWrap(wrap);
 	}
 
+	public int getCaretPosition()
+	{
+		return textArea.getCaretPosition();
+	}
+
+	public void setSelectionStart(int start)
+	{
+		textArea.setSelectionStart(start);
+	}
+
+	public void setSelectionEnd(int end)
+	{
+		textArea.setSelectionEnd(end);
+	}
+
+
+
+
 
 }

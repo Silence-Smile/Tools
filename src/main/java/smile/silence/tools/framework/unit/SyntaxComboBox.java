@@ -47,4 +47,10 @@ public class SyntaxComboBox extends JComboBox<String>
         setSelectedItem(item);
     }
 
+    public String getSelectedSyntax()
+	{
+		return (String) getSelectedItem();
+	}
+
+
 }

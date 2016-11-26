@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
-import smile.silence.tools.framework.unit.SyntaxComboBox;
 import smile.silence.tools.iface.AbstractOneOperationTransformer;
 
 /**
@@ -18,14 +17,16 @@ public class JsonFormatTransformer extends AbstractOneOperationTransformer
 		return "JSON";
 	}
 
+	public String getSyntax()
+	{
+		return SyntaxConstants.SYNTAX_STYLE_JSON;
+	}
+
 	public String transform(String origin, String encoding) throws Exception
 	{
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		JsonParser jp = new JsonParser();
 		JsonElement je = jp.parse(origin);
-
-		SyntaxComboBox.getInstance().setSelectedSyntax(SyntaxConstants.SYNTAX_STYLE_JSON);
-
 		return gson.toJson(je);
 	}
 }

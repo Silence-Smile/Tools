@@ -19,6 +19,7 @@ public class TransformerContainer
 		regist(new QueryStringTransformer());
 		regist(new XmlFormatTransformer());
 		regist(new JsonFormatTransformer());
+		regist(new PaymentsLogTransformer());
 	}
 
 	private static void regist(Transformer transformer)
