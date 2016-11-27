@@ -15,6 +15,7 @@ public class TransformerContainer
 		regist(new HexStrTransformer());
 		regist(new Base64Transformer());
 		regist(new UrlTransformer());
+		regist(new HtmlTransformer());
 		regist(new SqlInTransformer());
 		regist(new QueryStringTransformer());
 		regist(new XmlFormatTransformer());

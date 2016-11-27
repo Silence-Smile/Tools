@@ -27,8 +27,8 @@ public class PaymentsLogTransformer extends AbstractOneOperationTransformer
 	public String transform(String origin, String encoding) throws Exception
 	{
 		StringBuilder sb = new StringBuilder();
-		sb.append(origin.substring(origin.indexOf("context[") + 8, origin.indexOf("-> {"))).append("\r\n\r\n");
-		String jsonPart = origin.substring(origin.indexOf("-> {") + 3, origin.lastIndexOf("}") + 1);
+		sb.append(origin.substring(origin.indexOf("context[") + 8, origin.indexOf(" -> {"))).append("\r\n\r\n");
+		String jsonPart = origin.substring(origin.indexOf(" -> {") + 4, origin.lastIndexOf("}") + 1);
 
 		JSONObject json = JSON.parseObject(jsonPart);
 		String sendToBankSource = (String) json.get("SendToBankSource");
