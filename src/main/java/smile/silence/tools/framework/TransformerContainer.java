@@ -21,6 +21,7 @@ public class TransformerContainer
 		regist(new XmlFormatTransformer());
 		regist(new JsonFormatTransformer());
 		regist(new PaymentsLogTransformer());
+		regist(new GarbledTransformer());
 	}
 
 	private static void regist(Transformer transformer)
