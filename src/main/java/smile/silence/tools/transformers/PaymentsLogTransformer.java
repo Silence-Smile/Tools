@@ -43,7 +43,7 @@ public class PaymentsLogTransformer extends AbstractOneOperationTransformer
 			sb.append(bankReply).append("\r\n\r\n");
 		}
 
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 		JsonParser jp = new JsonParser();
 		JsonElement je = jp.parse(jsonPart);
 		return sb.append(gson.toJson(je)).toString();
