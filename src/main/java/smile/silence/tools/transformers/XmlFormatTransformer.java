@@ -1,5 +1,10 @@
 package smile.silence.tools.transformers;
 
+import org.apache.commons.lang3.StringUtils;
+import org.dom4j.Document;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import smile.silence.tools.iface.AbstractOneOperationTransformer;
 
@@ -29,22 +34,41 @@ public class XmlFormatTransformer extends AbstractOneOperationTransformer
 
 	public String transform(String origin, String encoding) throws Exception
 	{
-		origin = origin.trim();
-		String declaration = "";
-		if (origin.startsWith("<?") && origin.contains("?>"))
-		{
-			declaration = origin.substring(0, origin.lastIndexOf("?>") + 2) + "\r\n";
-			origin = origin.substring(origin.lastIndexOf("?>") + 2);
-		}
-		Source xmlInput = new StreamSource(new StringReader(origin));
-		StringWriter stringWriter = new StringWriter();
-		StreamResult xmlOutput = new StreamResult(stringWriter);
-		TransformerFactory transformerFactory = TransformerFactory.newInstance();
-		transformerFactory.setAttribute("indent-number", 4);
-		Transformer transformer = transformerFactory.newTransformer();
-		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-		transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-		transformer.transform(xmlInput, xmlOutput);
-		return declaration + xmlOutput.getWriter().toString();
+	    String oldDecl = getDecla(origin);
+		SAXReader reader = new SAXReader();
+		StringReader in = new StringReader(origin);
+		Document doc = reader.read(in);
+		OutputFormat formater = OutputFormat.createPrettyPrint();
+		formater.setEncoding(encoding);
+		formater.setIndentSize(4);
+		StringWriter out = new StringWriter();
+		XMLWriter writer = new XMLWriter(out, formater);
+		writer.write(doc);
+		writer.close();
+		return replaceDecl(out.toString(),oldDecl);
 	}
+
+	/**
+     * 用原xml头替换dom4j自己生成的头
+	 */
+	private String replaceDecl(String xml,String newDeclaration)
+	{
+		return xml.replace(xml.substring(0, xml.lastIndexOf("?>") + 2), newDeclaration).trim();
+	}
+
+    /**
+     * 得到原xml头
+     * @param xml
+     * @return
+     */
+	private String getDecla(String xml)
+    {
+        String xmlTrim = xml.trim();
+        if (xmlTrim.startsWith("<?") && xmlTrim.contains("?>"))
+        {
+           return xmlTrim.substring(0, xmlTrim.lastIndexOf("?>") + 2);
+        }
+       return StringUtils.EMPTY;
+    }
+
 }

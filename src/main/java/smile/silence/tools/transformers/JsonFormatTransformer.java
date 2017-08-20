@@ -24,7 +24,7 @@ public class JsonFormatTransformer extends AbstractOneOperationTransformer
 
 	public String transform(String origin, String encoding) throws Exception
 	{
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 		JsonParser jp = new JsonParser();
 		JsonElement je = jp.parse(origin);
 		return gson.toJson(je);
